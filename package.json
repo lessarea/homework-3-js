@@ -1,0 +1,16 @@
+{
+  "name": "homework-3",
+  "version": "1.0.0",
+  "description": "Function accept 2 parameters:str and sp. str is a sentence. sp is a char as separator. First we need to divide the sentence into words(Use separator space); and then divide each word into characters(Use separator empty string); and then merge each characters with the specified `sp`; at last merge all the words(Use separator space) and return it.",
+  "scripts": {
+    "test": "mocha ./src/*.spec.js*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lessarea/homework-3-js.git"
+  },
+  "author": "Diana Garbuzova",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  }
+}

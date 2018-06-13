@@ -41,6 +41,16 @@ describe('to camel case', function() {
     assert.equal(toCamelCase('The-stealth-warrior'),
         'TheStealthWarrior');
   });
+  it('should return camel casing string without delimiters', function() {
+    assert.equal(toCamelCase('hello_--_my-_-sweet__doctor'),
+        'helloMySweetDoctor');
+  });
+  it('should return an empty string', function() {
+    assert.equal(toCamelCase('_-_-_-'), '');
+  });
+  it('should return an empty string', function() {
+    assert.equal(toCamelCase('- - -'), '');
+  });
 });
 
 describe('reverse words in the sentence', function() {

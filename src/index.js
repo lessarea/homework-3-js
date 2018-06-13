@@ -12,17 +12,22 @@ const convert = function(hash) {
 };
 
 const toCamelCase = function(str) {
-  const regex = /[-_]/g;
   for (let index = 0; index < str.length; index++) {
     const current = str[index];
     const next = str[index + 1];
-    const isDelimiter = regex.test(current);
-    if (isDelimiter) {
-      const subStr = current + next;
-      str = str.replace(subStr, next.toUpperCase());
+    const currentDelimiter = isDelimiter(current);
+    const nextDelimiter = isDelimiter(next);
+
+    if (currentDelimiter) {
+      if(nextDelimiter){
+        continue;
+      }
+      let subStr = current + next;
+      str = str.replace(subStr, () => nextDelimiter ? '': next.toUpperCase());
       index++;
     }
   }
+  str = str.replace(/[-_ ]/g, '');
   return str;
 };
 
@@ -56,6 +61,11 @@ const stringExpansion = function(str) {
   }
   return '';
 };
+
+function isDelimiter(symbol) {
+  const regex = /[-_]/g;
+  return regex.test(symbol);
+}
 
 module.exports = {
   splitAndMerge,

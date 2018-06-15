@@ -1,4 +1,4 @@
-const splitAndMerge = function(str, sp) {
+const splitAndMerge = (str, sp) => {
   const words = str.split(' ');
   const splittedWords = words.map(
       word => word.split('').join(sp)
@@ -6,32 +6,14 @@ const splitAndMerge = function(str, sp) {
   return splittedWords.join(' ');
 };
 
-const convert = function(hash) {
-  // ^_^
-  return Object.entries(hash);
+const convert = hash => Object.entries(hash);
+
+const toCamelCase = str => {
+  return str.replace(/[-_ ]+(.)?/g,
+      (match, char) => char ? char.toUpperCase() : '');
 };
 
-const toCamelCase = function(str) {
-  for (let index = 0; index < str.length; index++) {
-    const current = str[index];
-    const next = str[index + 1];
-    const currentDelimiter = isDelimiter(current);
-    const nextDelimiter = isDelimiter(next);
-
-    if (currentDelimiter) {
-      if(nextDelimiter){
-        continue;
-      }
-      let subStr = current + next;
-      str = str.replace(subStr, () => nextDelimiter ? '': next.toUpperCase());
-      index++;
-    }
-  }
-  str = str.replace(/[-_ ]/g, '');
-  return str;
-};
-
-const reverseWords = function(str) {
+const reverseWords = str => {
   const words = str.split(' ');
   const reversedWords = words.map(
       word => word.split('').reverse().join('')
@@ -39,7 +21,7 @@ const reverseWords = function(str) {
   return reversedWords.join(' ');
 };
 
-const stringExpansion = function(str) {
+const stringExpansion = str => {
   if (str) {
     let result = '';
     for (let index = 0; index < str.length; index++) {
@@ -61,11 +43,6 @@ const stringExpansion = function(str) {
   }
   return '';
 };
-
-function isDelimiter(symbol) {
-  const regex = /[-_]/g;
-  return regex.test(symbol);
-}
 
 module.exports = {
   splitAndMerge,
